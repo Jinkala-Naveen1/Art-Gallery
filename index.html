@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Artists</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Our Art Gallery</h1>
+        <p>Discover the beauty of art in its various forms.</p>
+        <!-- <a href="#" class="cta-button">View Gallery</a> -->
+    </section>
+    <h2 style="text-align: center;";>Featured Artworks</h2>
+    <section class="featured-artworks">
+        <button id="prev-button">Previous</button>
+        <div class="artwork">
+            <img src="artwork1.jpeg" alt="Artwork 1">
+            <h3>Artwork Title 1</h3>
+            <p>Artist: Artist Name 1</p>
+        </div>
+        <div class="artwork">
+            <img src="artwork2.jpeg" alt="Artwork 2">
+            <h3>Artwork Title 2</h3>
+            <p>Artist: Artist Name 2</p>
+        </div>
+        <div class="artwork">
+            <img src="artwork3.jpeg" alt="Artwork 2">
+            <h3>Artwork Title 2</h3>
+            <p>Artist: Artist Name 2</p>
+        </div>
+        <button id="next-button">Next</button>
+    </section>
+
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>Web Designers</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Art Gallery</p>
+    </footer>
+    <!-- Add this JavaScript code to your HTML file, just before the closing </body> tag -->
+<script>
+    const featuredArtworks = document.querySelectorAll('.artwork');
+    let currentArtworkIndex = 0;
+
+    function showArtwork(index) {
+        featuredArtworks.forEach((artwork, i) => {
+            artwork.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    function nextArtwork() {
+        currentArtworkIndex = (currentArtworkIndex + 1) % featuredArtworks.length;
+        showArtwork(currentArtworkIndex);
+    }
+
+    function previousArtwork() {
+        currentArtworkIndex = (currentArtworkIndex - 1 + featuredArtworks.length) % featuredArtworks.length;
+        showArtwork(currentArtworkIndex);
+    }
+
+    // Display the first artwork initially
+    showArtwork(currentArtworkIndex);
+
+    // Add event listeners for next and previous buttons
+    const nextButton = document.getElementById('next-button');
+    const prevButton = document.getElementById('prev-button');
+
+    nextButton.addEventListener('click', nextArtwork);
+    prevButton.addEventListener('click', previousArtwork);
+</script>
+
+</body>
+</html>
